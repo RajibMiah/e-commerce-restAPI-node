@@ -1,7 +1,8 @@
 const dotenv = require('dotenv')
 const express = require('express')
 const mongoose = require('mongoose')
-const UserRoute = require('./routes/user')
+const userRoute = require('./routes/user')
+const authRoute = require('./routes/auth')
 const app = express()
 dotenv.config()
 
@@ -14,7 +15,8 @@ mongoose.connect(process.env.MONGO_URL)
     console.log(err)
 })
 app.use(express.json())
-app.use('/api/users' , UserRoute)
+app.use('/api/auth' , authRoute)
+app.use('/api/users' , userRoute)
 
 
 app.listen(port , ()=>{
