@@ -24,7 +24,7 @@ router.put('/:id' , verifyTokenAndAuthorization , async(req , res) =>{
 router.delete('/:id' , verifyTokenAndAuthorization , async (req, res) =>{
 
     try{
-        await  user.findById(req.params.id)
+        await  user.findByIdAndDelete(req.params.id)
         res.status(200).json("User has been deleted...")
 
     }catch(err){
